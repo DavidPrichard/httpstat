@@ -29,23 +29,20 @@ import (
 
 const (
 	HTTPSTemplate = `` +
-		`  DNS Lookup   TCP Connection   TLS Handshake   Server Processing   Content Transfer` + "\n" +
-		`[%s  |     %s  |    %s  |        %s  |       %s  ]` + "\n" +
-		`            |                |               |                   |                  |` + "\n" +
-		`   namelookup:%s      |               |                   |                  |` + "\n" +
-		`                       connect:%s     |                   |                  |` + "\n" +
-		`                                   pretransfer:%s         |                  |` + "\n" +
-		`                                                     starttransfer:%s        |` + "\n" +
-		`                                                                                total:%s` + "\n"
+		`DNS Lookup %s ms` 		+ "\n" +
+		`TCP Connection %s ms` 		+ "\n" +
+		`TLS Handshake %s ms` 		+ "\n" +
+		`Server Processing %s ms` 	+ "\n" +
+		`Content Transfer %s ms` 	+ "\n\n" +
+		`Total: %s ms` + "\n"
+
 
 	HTTPTemplate = `` +
-		`   DNS Lookup   TCP Connection   Server Processing   Content Transfer` + "\n" +
-		`[ %s  |     %s  |        %s  |       %s  ]` + "\n" +
-		`             |                |                   |                  |` + "\n" +
-		`    namelookup:%s      |                   |                  |` + "\n" +
-		`                        connect:%s         |                  |` + "\n" +
-		`                                      starttransfer:%s        |` + "\n" +
-		`                                                                 total:%s` + "\n"
+		`DNS Lookup %s ms` 		+ "\n" +
+		`TCP Connection %s ms` 		+ "\n" +
+		`Server Processing %s ms` 	+ "\n" +
+		`Content Transfer %s ms` 	+ "\n\n" +
+		`Total: %s ms` + "\n"
 )
 
 var (
@@ -318,10 +315,10 @@ func visit(url *url.URL) {
 			fmta(t3.Sub(t2)), // tls handshake
 			fmta(t4.Sub(t3)), // server processing
 			fmta(t5.Sub(t4)), // content transfer
-			fmtb(t1.Sub(t0)), // namelookup
-			fmtb(t2.Sub(t0)), // connect
-			fmtb(t3.Sub(t0)), // pretransfer
-			fmtb(t4.Sub(t0)), // starttransfer
+			//fmtb(t1.Sub(t0)), // namelookup
+			//fmtb(t2.Sub(t0)), // connect
+			//fmtb(t3.Sub(t0)), // pretransfer
+			//fmtb(t4.Sub(t0)), // starttransfer
 			fmtb(t5.Sub(t0)), // total
 		)
 	case "http":
@@ -330,9 +327,9 @@ func visit(url *url.URL) {
 			fmta(t3.Sub(t1)), // tcp connection
 			fmta(t4.Sub(t3)), // server processing
 			fmta(t5.Sub(t4)), // content transfer
-			fmtb(t1.Sub(t0)), // namelookup
-			fmtb(t3.Sub(t0)), // connect
-			fmtb(t4.Sub(t0)), // starttransfer
+			//fmtb(t1.Sub(t0)), // namelookup
+			//fmtb(t3.Sub(t0)), // connect
+			//fmtb(t4.Sub(t0)), // starttransfer
 			fmtb(t5.Sub(t0)), // total
 		)
 	}
