@@ -1,6 +1,6 @@
 # httpstat
 
-This is a fork of [Dave Cheney's httpstat, itself a Golang version of [reorx's httpstat](https://github.com/reorx/httpstat).
+This is a fork of [Dave Cheney's httpstat](https://github.com/davecheney/httpstat), itself a Golang version of [reorx's httpstat](https://github.com/reorx/httpstat).
 As he has closed the original, which I've found useful (and somewhat superior to the original), this is just a personal copy so I'll always have access in the future.
 
 ![Shameless](./screenshot.png)
